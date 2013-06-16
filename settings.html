@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Monolith Mobile</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+	<link rel="stylesheet" type="text/css" href="style/reset.css" /> 
+	<link rel="stylesheet" type="text/css" href="style/root.css" /> 
+		
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/toogle.js"></script>
+</head>
+<body>
+    <!-- start header -->
+    <div id="header">
+        <a href="#"><img src="img/logo.png" width="77" height="24" alt="logo" class="logo" /></a>
+       	<a href="main.html" class="button back"><img src="img/back-button.png" width="15" height="16" alt="icon" /></a>
+       	<a href="#" class="button search"><img src="img/search.png" width="16" height="16" alt="icon"/></a>
+       	<a href="form.html" class="button create"><img src="img/create.png" width="16" height="16" alt="icon"/></a>
+		<div class="clear"></div>
+    </div>
+    <!-- end header -->
+    
+    <!-- start searchbox -->
+    <div class="searchbox">
+		<form id="form1" name="form1" method="post" action="">
+			<input type="text" name="textfield" id="textfield" class="txtbox" />
+		</form>
+	</div>
+    <!-- end searchbox -->
+    
+    <!-- start page -->
+    <div class="page">
+        <div class="simplebox">
+			<h1 class="titleh">SYNC</h1>
+            <div class="content">
+                <form id="form12" name="form1" method="post" target="_blanc" action="model/sync.php">
+					<div class="form-line">
+						<label><input type="checkbox" name="checkbox1" id="checkbox1" />Import Prices</label>
+                    </div>
+                    <div class="form-line">
+						<label><input type="checkbox" name="checkbox2" id="checkbox2" />Import Stock</label>
+                    </div>
+                    
+                    <div class="form-line">
+						<label>Price Line ID <input type="text" name="textfield1" id="textfield1"  style=" width:25%;" /></label>
+                    </div>
+                     <div class="form-line">
+						<label>NE NUM <input type="text" name="textfield2" id="textfield2"  style=" width:25%;" /></label>
+                    </div>
+                     <div class="form-line">
+						<label>Terminal Name <input type="text" name="textfield3" id="textfield3"  style=" width:25%;" /></label>
+                    </div>
+                     <div class="form-line">
+						<label class="st-label"><center>Warehouse</center></label>
+						<select name="select1" id="select1">
+							<option>MUK 1</option>
+							<option>MUK 2</option>
+							<option>MUK 3</option>
+							<option>MUK 4</option>
+							<option>MUK 5</option>
+							<option>MUK 6</option>
+							<option>MUK 7</option>
+							<option>MUK 8</option>
+							<option>Other</option>
+						</select>
+                    </div>	
+                    <div class="form-line">
+						<label><input type="checkbox" name="checkbox3" id="checkbox3" />TXT TRANSFER</label>
+                    </div>
+                    <div class="form-line">
+						<label><input type="checkbox" name="checkbox4" id="checkbox4" />NE TRANSFER(INTERF)</label>
+                    </div>
+						<label><input type="submit" class="submit-button" value="Syncronyse"/>     </label>
+                       
+                </form>   
+                
+            </div>
+		</div>
+        <!-- start top button -->
+        <div class="topbutton"><a href="#header"><span>Top</span></a></div>
+        <!-- end top button -->
+		
+		<!-- start footer -->
+        <div class="footer">
+			© 2012 - Cupcake Mobile by <a href="http://themeforest.net/user/egemem" target="_blank">egemem</a>
+        </div>
+        <!-- end footer -->
+		<div class="clear"></div>
+    </div>
+    <!-- end page -->
+</body>
+</html>
