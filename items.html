@@ -1,123 +1,79 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>Monolith Mobile</title>
 	<meta name="viewport" content="width=device-width,initial-scale=1" />
 
-    <link rel="stylesheet" type="text/css" href="style/reset.css" /> 
-    <link rel="stylesheet" type="text/css" href="style/root.css" /> 
-    
-    <script type="text/javascript" src="js/dbConnection.js"></script>
-    <script type="text/javascript" src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="js/toogle.js"></script>
-    <script type="text/javascript">
-	function onSelect(){
-		var id = document.getElementById('ItemID').value;
+	<link rel="stylesheet" type="text/css" href="style/reset.css" /> 
+	<link rel="stylesheet" type="text/css" href="style/root.css" /> 
 		
-		var query = "SELECT * FROM ItemNames where ItemID=?;";
-		try {
-		localDB.transaction(function(transaction){
-        
-				transaction.executeSql(query, [id], function(transaction, results){
-				
-					var row = results.rows.item(0);
-					
-					document.getElementById('Description').value = row['Description'];
-				}, function(transaction, error){
-					updateStatus("Error: " + error.code + "<br>Message: " + error.message);
-				});
-			});
-		} 
-		catch (e) {
-			updateStatus("Error: Unable to select data from the db " + e + ".");
-		}
-	}
-	</script>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/toogle.js"></script>
 </head>
-<body onload="onInit()">	
+<body>
     <!-- start header -->
-    	<div id="header">
-         <a href="#"><img src="img/logo.png" width="50" height="24" alt="logo" class="logo" /></a>
-         	<a href="main.html" class="button back"><img src="img/back-button.png" width="15" height="16" alt="icon" /></a>
-        <div class="clear"></div>
-        </div>
+    <div id="header">
+        <a href="#"><img src="img/logo.png" width="77" height="24" alt="logo" class="logo" /></a>
+       	<a href="main.html" class="button back"><img src="img/back-button.png" width="15" height="16" alt="icon" /></a>
+       	<a href="#" class="button search"><img src="img/search.png" width="16" height="16" alt="icon"/></a>
+       	<a href="form.html" class="button create"><img src="img/create.png" width="16" height="16" alt="icon"/></a>
+		<div class="clear"></div>
+    </div>
     <!-- end header -->
     
     <!-- start searchbox -->
     <div class="searchbox">
-   	  <form id="form1" name="form1" method="post" action="">
-      	<input type="text" name="textfield" id="textfield" class="txtbox" />
-   	  </form>
-    </div>
+		<form id="form1" name="form1" method="post" action="">
+			<input type="text" name="textfield" id="textfield" class="txtbox" />
+		</form>
+	</div>
     <!-- end searchbox -->
-  
+    
     <!-- start page -->
     <div class="page">
         <div class="simplebox">
-			<center><h1 class="titleh">Product Details</h1></center>
+			<h1 class="titleh">Items</h1>
             <div class="content">
-                <form id="form12" name="form1" method="post" onsubmit="onSelect();">
-					
+                <form id="form12" name="form1" method="post" action="?pg=items">
 					<div class="form-line">
-						<label class="st-label">Item </label><input type="text" name="ItemID" id="ItemID" onchange='onSelect();' style="width:50%;" />
-						<input type="button" onclick="onSelect();" style="background:url('img/icons/search.png');background-position:center;background-repeat:no-repeat; width:40px" value=""/></a>
-						<input type="button" style="background:url('img/icons/photo-gallery.png');background-position:center;background-repeat:no-repeat; width:40px" value=""/></a>
-						
-					</div>
-					
+						<label>Item <input type="text" name="ItemID" id="ItemID" style=" width:80%;" /></label>
+                    </div>
                     <div class="form-line">
 						<label class="st-label">Description</label>
-						<textarea name="Description" id="Description" style="width:93%;" rows="3" cols="3"></textarea>
+						<textarea name="Description" id="Description" style="width:80%;" rows="3" cols="3"></textarea>
                     </div>
-					
-					<table class="tabledata"  style="width:100%; height:20px" > 
-                        <thead> 
-							<tr align="center"> 	
-                            	<th style="width:50%">Cost Price Without VAT</th> 
-                            	<th style="width:50%">Cost Price With VAT</th> 
-                            </tr> 
-                       	</thead> 
-						<tbody> 
-                           	<tr align="center"> 
-						  		<td>5,00</td> 
-                           		<td>7,00 </td> 
-                           	</tr> 
-						</tbody> 
-                    </table>
-					<br>
-					<table class="tabledata"  style="width:100%;"> 
-						<thead> 
-							<tr align="center"> 
-								<th style="width:20%">P.Line</th>	
-								<th style="width:40%">Price Without VAT</th> 
-                            	<th style="width:40%">Price With VAT</th> 
-							</tr> 
-                        </thead> 
-						<tbody> 
-                           	<tr align="center"> 
-								<td>
-									<select name="select" id="select" style="width:100%;">
-										<option>1</option>
-										<option selected>2</option>
-										<option>3</option>
-										<option>4</option>
-										<option>5</option>
-										<option>6</option>
-										<option>7</option>
-										<option>8</option>
-										<option>9</option>
-										<option>10</option>
-									</select>
-								</td>
-								<td> 1.00 £ </td>
-								<td> 1.20 £ </td>
-                            </tr> 
-										
-						</tbody> 
-                    </table>
-				</div>
+                    <div class="form-line">
+						<label>Prop1 <input type="text" name="textfield3" id="textfield3"  style=" width:50%;" /></label>
+                    </div>	
+                    <div class="form-line">
+						<label>Price/Coust <input type="text" name="textfield4" id="textfield4"  style=" width:25%;" /></label>
+                    </div>
+                    <div class="form-line">
+						<label>Price With VAT <input type="text" name="textfield5" id="textfield5"  style=" width:25%;" /></label>
+                    </div>
+                    <div class="form-line">
+						<label>Price Without VAT <input type="text" name="textfield6" id="textfield6"  style=" width:25%;" /></label>
+                    </div>
+                    <div class="form-line">
+						<label>P Line <input type="text" name="textfield7" id="textfield7"  style=" width:10%;" /></label>
+                    </div>
+                    <div class="form-line">
+						<label>Price <input type="text" name="textfield8" id="textfield8"  style=" width:25%;" /></label>
+                    </div>
+                    <div class="form-line">
+						<label>Price with VAT <input type="text" name="textfield9" id="textfield9"  style=" width:25%;" /></label>
+                    </div>
+                    <div class="form-line">
+						<label><input type="checkbox"  name="marginBox" id="marginBox" onclick=" if(document.getElementById('marginBox').checked){ document.getElementById('margin').style.display='';
+						}else{
+							document.getElementById('margin').style.display='none';	
+						}" value="1"/>Margin</label> <input style="display:none" type="text" name="textfield10" id="margin"  style=" width:25%;" />
+				
+                    </div>				
+                    <div class="form-line">
+						<label><input type="submit" class="submit-button"  value="SEARCH"/></label>
+                    </div>
                 </form>      
             </div>
 		</div>
@@ -127,7 +83,7 @@
 		
 		<!-- start footer -->
         <div class="footer">
-        <center>© 2013 - Monolith Mobile by <a href="http://smartdigit.pt" target="_blank">SmartDigit</a></center>
+			© 2012 - Cupcake Mobile by <a href="http://themeforest.net/user/egemem" target="_blank">egemem</a>
         </div>
         <!-- end footer -->
 		<div class="clear"></div>
